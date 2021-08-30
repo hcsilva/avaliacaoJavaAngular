@@ -1,0 +1,84 @@
+package com.github.henrique.avaliacaojava.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.github.henrique.avaliacaojava.dto.AvaliacaoDto;
+import com.github.henrique.avaliacaojava.mapper.AvaliacaoMapper;
+import com.github.henrique.avaliacaojava.models.Avaliacao;
+import com.github.henrique.avaliacaojava.repository.AvaliacaoRepository;
+import com.github.henrique.avaliacaojava.util.BigDecimalConverter;
+
+@Service
+public class AvaliacaoService implements AvaliacaoMapper {
+
+	@Autowired
+	private BigDecimalConverter bigDecimalConverter;
+
+	@Autowired
+	private AvaliacaoMapper avaliacaoMapper;
+
+	@Autowired
+	private AvaliacaoRepository avaliacaoRepository;
+
+	@Transactional
+	public Avaliacao save(Avaliacao avaliacao) {
+		return avaliacaoRepository.save(avaliacao);
+	}
+
+	@Transactional(readOnly = true)
+	public Avaliacao findById(Long id) {
+		return avaliacaoRepository.findById(id)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Avaliacao não encontrada"));
+	}
+
+	public void deletar(Long id) {
+		Avaliacao avaliacao = findById(id);
+		avaliacaoRepository.delete(avaliacao);
+	}
+
+	public void update(Long id, Avaliacao avaliacaoNovo) {
+		Avaliacao avaliacaoSalvo = findById(id);
+		Avaliacao avaliacao = avaliacaoNovo;
+		avaliacao.setId(avaliacaoSalvo.getId());
+
+		avaliacaoRepository.save(avaliacao);
+	}
+
+	@Transactional(readOnly = true)
+	public List<Avaliacao> findAll() {
+		return avaliacaoRepository.findAll();
+	}
+
+	@Transactional(readOnly = true)
+	public Page<Avaliacao> findAll(Pageable pageable) {
+		return avaliacaoRepository.findAll(pageable);
+	}
+
+	@Override
+	public Avaliacao toModel(AvaliacaoDto avaliacaoDto) {
+		if (avaliacaoDto == null) {
+			return null;
+		}
+
+		Avaliacao avaliacao = new Avaliacao();
+		avaliacao.setDescricao(avaliacaoDto.getDescricao());
+		avaliacao.setPeso(bigDecimalConverter.converter(avaliacaoDto.getPeso()));
+
+		return avaliacao;
+	}
+
+	@Override
+	public AvaliacaoDto toDto(Avaliacao avaliacao) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

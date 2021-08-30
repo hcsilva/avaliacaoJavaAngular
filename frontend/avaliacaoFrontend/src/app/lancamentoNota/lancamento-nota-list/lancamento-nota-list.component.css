@@ -1,0 +1,19 @@
+.full-width {
+    width: 100%;
+}
+
+.half-width {
+    width: 50%;
+}
+
+.table {
+    padding-top: 10px;
+}
+
+.edit>i {
+    color: #d9cd26;
+}
+
+.delete>i {
+    color: #e35e6b;
+}

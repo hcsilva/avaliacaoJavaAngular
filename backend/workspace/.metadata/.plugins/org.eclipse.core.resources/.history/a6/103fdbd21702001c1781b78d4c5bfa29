@@ -1,0 +1,54 @@
+package com.github.henrique.avaliacaojava.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.github.henrique.avaliacaojava.models.LancamentoNota;
+import com.github.henrique.avaliacaojava.repository.LancamentoNotaRepository;
+
+public class LancamentoNotaService {
+
+	@Autowired
+	private LancamentoNotaRepository lancamentoNotaRepository;
+
+	@Transactional
+	public LancamentoNota save(LancamentoNota lancamentoNota) {
+		return lancamentoNotaRepository.save(lancamentoNota);
+	}
+
+	@Transactional(readOnly = true)
+	public LancamentoNota findById(Long id) {
+		return lancamentoNotaRepository.findById(id)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "LancamentoNota não encontrado"));
+	}
+
+	public void deletar(Long id) {
+		LancamentoNota lancamentoNota = findById(id);
+		lancamentoNotaRepository.delete(lancamentoNota);
+	}
+
+	public void update(Long id, LancamentoNota lancamentoNotaNovo) {
+		LancamentoNota lancamentoNotaSalvo = findById(id);
+		LancamentoNota lancamentoNota = lancamentoNotaNovo;
+		lancamentoNota.setId(lancamentoNotaSalvo.getId());
+
+		lancamentoNotaRepository.save(lancamentoNota);
+	}
+
+	@Transactional(readOnly = true)
+	public List<LancamentoNota> findAll() {
+		return lancamentoNotaRepository.findAll();
+	}
+
+	@Transactional(readOnly = true)
+	public Page<LancamentoNota> findAll(Pageable pageable) {
+		return lancamentoNotaRepository.findAll(pageable);
+	}
+
+}

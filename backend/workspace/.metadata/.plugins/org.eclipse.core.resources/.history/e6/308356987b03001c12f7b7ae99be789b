@@ -1,0 +1,34 @@
+package com.github.henrique.avaliacaojava.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@SuppressWarnings("serial")
+@Entity
+@Table(name = "ANO_BIMESTRE")
+public class AnoBimestre extends AbstractEntity<Long> {
+
+	@Column(name = "ANO")
+	Long ano;
+
+	@Column(name = "BIMESTRE")
+	Long bimestre;
+
+	public Long getAno() {
+		return ano;
+	}
+
+	public void setAno(Long ano) {
+		this.ano = ano;
+	}
+
+	public Long getBimestre() {
+		return bimestre;
+	}
+
+	public void setBimestre(Long bimestre) {
+		this.bimestre = bimestre;
+	}
+
+}

@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-card-title>Calcular Notas Ano</mat-card-title>
+    <form [formGroup]="formulario" (ngSubmit)="submit()">
+        <mat-form-field class="full-width ">
+            <mat-label>Ano</mat-label>
+            <input formControlName="ano" matInput type="text" mask="0000" placeholder="Digite o ano">
+            <mat-hint style="color: red;" *ngIf="
+            (ano.touched || ano.dirty) && ano.invalid && ano?.errors?.required">
+                Ano é obrigatório
+            </mat-hint>
+        </mat-form-field>
+
+        <mat-card-actions>
+            <button [disabled]="formulario.invalid" type="submit" mat-raised-button color="primary">Cálcular</button>
+            <button type="button" mat-raised-button color="warn" (click)="cancel()">Cancelar</button>
+        </mat-card-actions>
+    </form>
+</mat-card>

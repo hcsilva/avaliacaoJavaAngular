@@ -1,0 +1,15 @@
+package com.github.henrique.avaliacaojava.util;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class BigDecimalConverter {
+	
+	public BigDecimal converter(String value) {
+		
+		
+		
+		
+	}
+
+}

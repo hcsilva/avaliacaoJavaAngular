@@ -1,0 +1,10 @@
+package com.github.henrique.avaliacaojava.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.github.henrique.avaliacaojava.models.Aluno;
+import com.github.henrique.avaliacaojava.models.AnoBimestre;
+
+public interface AnoBimestreRepository extends JpaRepository<AnoBimestre, Long>{
+
+}

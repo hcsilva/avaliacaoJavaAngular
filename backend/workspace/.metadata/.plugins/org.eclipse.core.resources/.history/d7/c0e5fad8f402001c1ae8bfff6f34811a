@@ -1,0 +1,5 @@
+package com.github.henrique.avaliacaojava.mapper;
+
+public class AlunoMapper {
+
+}

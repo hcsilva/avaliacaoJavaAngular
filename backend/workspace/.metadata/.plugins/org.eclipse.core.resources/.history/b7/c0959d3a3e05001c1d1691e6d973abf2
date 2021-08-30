@@ -1,0 +1,37 @@
+CREATE TABLE aluno (
+ id SERIAL PRIMARY KEY,
+ nome VARCHAR(50) NOT NULL,
+ situacao_aluno VARCHAR(20)
+);
+
+CREATE TABLE avaliacao(
+   id SERIAL PRIMARY KEY,
+   descricao VARCHAR(50) NOT NULL,
+   peso numeric(5, 2)
+);
+
+CREATE TABLE ano_bimestre(
+   id SERIAL PRIMARY KEY,
+   ano INT NOT NULL,
+   bimestre INT NOT NULL
+);
+
+CREATE TABLE lancamento_nota(
+       id SERIAL PRIMARY KEY,
+       id_aluno INT NOT NULL,
+       faltas INT NOT NULL,
+       valor_avaliacao_1 NUMERIC NOT NULL,
+       valor_avaliacao_2 NUMERIC NOT NULL,
+       valor_avaliacao_3 NUMERIC NOT NULL,
+       valor_avaliacao_4 NUMERIC NOT NULL,
+       id_ano_bimestre INT NOT NULL,
+       
+        CONSTRAINT fk_aluno_id
+       	FOREIGN KEY (id_aluno)
+       	REFERENCES aluno(id),
+
+       	CONSTRAINT fk_ano_bimestre_id
+       	FOREIGN KEY (id_ano_bimestre)
+       	REFERENCES ano_bimestre(id)
+);
+

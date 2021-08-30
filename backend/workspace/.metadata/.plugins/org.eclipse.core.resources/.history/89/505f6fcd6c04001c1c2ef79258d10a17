@@ -1,0 +1,26 @@
+package com.github.henrique.avaliacaojava.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@SuppressWarnings("serial")
+@Entity
+@Table(name = "ALUNO")
+public class Aluno extends AbstractEntity<Long> {
+
+	@Column(name = "NOME")
+	private String nome;
+	
+	@Column(name = "SITUACAO")
+	private String situacao;
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+}

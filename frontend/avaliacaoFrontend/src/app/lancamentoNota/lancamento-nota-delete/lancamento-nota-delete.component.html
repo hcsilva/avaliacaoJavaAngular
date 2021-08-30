@@ -1,0 +1,54 @@
+<mat-card>
+    <mat-card-title>Excluir Notas</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="aluno" [value]="lancamentoNota.aluno.nome" name="aluno" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="ano" [value]="lancamentoNota.anoBimestre.ano" name="ano" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="bimestre" [value]="lancamentoNota.anoBimestre.bimestre" name="bimestre" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="faltas" [value]="lancamentoNota.anoBimestre.bimestre" name="falyas" disabled>
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <input matInput placeholder="participacaoSala" [value]="lancamentoNota.valorAvaliacao1" name="participacaoSala" disabled>
+        </mat-form-field>
+
+
+
+        <mat-form-field>
+            <input matInput placeholder="entregaTarefas" [value]="lancamentoNota.valorAvaliacao2" name="entregaTarefas" disabled>
+        </mat-form-field>
+
+
+
+        <mat-form-field>
+            <input matInput placeholder="trabalhoBimestral" [value]="lancamentoNota.valorAvaliacao2" name="trabalhoBimestral" disabled>
+        </mat-form-field>
+
+
+
+        <mat-form-field>
+            <input matInput placeholder="provaBimestral" [value]="lancamentoNota.valorAvaliacao3" name="provaBimestral" disabled>
+        </mat-form-field>
+
+
+
+
+    </form>
+    <button mat-raised-button (click)="deleteAluno()" color="warn">
+        Excluir
+    </button>
+
+    <button mat-raised-button (click)="cancelar()">
+        Cancelar
+    </button>
+</mat-card>

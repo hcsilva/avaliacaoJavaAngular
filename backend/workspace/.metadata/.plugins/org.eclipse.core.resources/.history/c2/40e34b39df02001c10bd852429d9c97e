@@ -1,0 +1,5 @@
+package com.github.henrique.avaliacaojava.configuracoes;
+
+public class WebConfig {
+
+}

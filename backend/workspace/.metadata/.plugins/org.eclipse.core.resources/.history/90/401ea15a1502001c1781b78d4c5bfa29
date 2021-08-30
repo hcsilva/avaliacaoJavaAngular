@@ -1,0 +1,55 @@
+package com.github.henrique.anoBimestrejava.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.github.henrique.anoBimestrejava.models.AnoBimestre;
+import com.github.henrique.anoBimestrejava.repository.AnoBimestreRepository;
+import com.github.henrique.anoBimestrejava.repository.AnoBimestreRepository;
+
+public class AnoBimestreService {
+
+	@Autowired
+	private AnoBimestreRepository anoBimestreRepository;
+
+	@Transactional
+	public AnoBimestre save(AnoBimestre anoBimestre) {
+		return anoBimestreRepository.save(anoBimestre);
+	}
+
+	@Transactional(readOnly = true)
+	public AnoBimestre findById(Long id) {
+		return anoBimestreRepository.findById(id)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Bimestre não encontrado"));
+	}
+
+	public void deletar(Long id) {
+		AnoBimestre anoBimestre = findById(id);
+		anoBimestreRepository.delete(anoBimestre);
+	}
+
+	public void update(Long id, AnoBimestre anoBimestreNova) {
+		AnoBimestre anoBimestreSalvo = findById(id);
+		AnoBimestre anoBimestre = anoBimestreNova;
+		anoBimestre.setId(anoBimestreSalvo.getId());
+
+		anoBimestreRepository.save(anoBimestre);
+	}
+
+	@Transactional(readOnly = true)
+	public List<AnoBimestre> findAll() {
+		return anoBimestreRepository.findAll();
+	}
+
+	@Transactional(readOnly = true)
+	public Page<AnoBimestre> findAll(Pageable pageable) {
+		return anoBimestreRepository.findAll(pageable);
+	}
+
+}

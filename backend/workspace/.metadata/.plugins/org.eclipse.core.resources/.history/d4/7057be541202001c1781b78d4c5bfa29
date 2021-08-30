@@ -1,0 +1,43 @@
+package com.github.henrique.avaliacaojava.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@SuppressWarnings("serial")
+@Entity
+@Table(name = "LANCAMENTO_NOTA")
+public class LancamentoNota extends AbstractEntity<Long> {
+
+	/*
+	 * id SERIAL PRIMARY KEY, aluno INT NOT NULL, observacao VARCHAR(100), faltas
+	 * INT NOT NULL, id_avaliacao INT NOT NULL, id_ano_bimestre INT NOT NULL,
+	 */
+
+	@NotNull
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_ALUNO")
+	Aluno aluno;
+
+	@Column(name = "OBSERVACAO")
+	String observacao;
+
+	@NotNull
+	@Column(name = "faltas")
+	Long faltas;
+
+	@NotNull
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_AVALIACAO")
+	Avaliacao avaliacao;
+
+	@NotNull
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_ANO_BIMESTRE")
+	AnoBimestre anoBimestre;
+
+}

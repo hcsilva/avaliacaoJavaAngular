@@ -1,0 +1,10 @@
+package com.github.henrique.avaliacaojava.models;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "LANCAMENTO_NOTA")
+public class LancamentoNota {
+
+}

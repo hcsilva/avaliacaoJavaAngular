@@ -1,0 +1,40 @@
+<mat-toolbar>
+    <mat-icon>account_circle</mat-icon>
+    Bimestres
+</mat-toolbar>
+
+<div style="padding-top: 15px;">
+    <button mat-raised-button color="primary" (click)="navigateToGerarBimestres()">Gerar Bimestres</button>
+</div>
+
+<table mat-table [dataSource]="bimestres" class="full-width table">
+
+    <ng-container matColumnDef="ano">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ano </th>
+        <td mat-cell *matCellDef="let bimestre"> {{ bimestre.ano }} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="bimestre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Bimestre </th>
+        <td mat-cell *matCellDef="let bimestre"> {{ bimestre.bimestre }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let row">
+            <a (click)="deletarBimestre(row.id)" class="delete">
+                <i class="material-icons">
+                                delete
+                            </i>
+            </a>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+    <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+
+</table>
+
+<mat-paginator [length]="totalElementos" [pageSize]="tamanho" [pageSizeOptions]="pageSizeOptions" (page)="paginar($event)">
+</mat-paginator>

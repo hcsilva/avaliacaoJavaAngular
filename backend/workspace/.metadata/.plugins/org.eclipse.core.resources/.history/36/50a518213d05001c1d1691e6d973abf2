@@ -1,0 +1,80 @@
+package com.github.henrique.avaliacaojava.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@SuppressWarnings("serial")
+@Entity
+@Table(name = "LANCAMENTO_NOTA")
+public class LancamentoNota extends AbstractEntity<Long> {
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_ALUNO")
+	Aluno aluno;
+
+	@Column(name = "faltas")
+	Integer faltas;
+
+	@Column(name = "valor_avaliacao_1")
+	Integer valorAvaliacao1;
+	
+	@Column(name = "valor_avaliacao_2")
+	Integer valorAvaliacao2;
+	
+	@Column(name = "valor_avaliacao_3")
+	Integer valorAvaliacao3;
+	
+	@Column(name = "valor_avaliacao_4")
+	Integer valorAvaliacao4;
+	
+	@NotNull(message = "{lancamentoNota.anoBimestre.campoObrigatorio}")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_ANO_BIMESTRE")
+	AnoBimestre anoBimestre;
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
+	public Long getFaltas() {
+		return faltas;
+	}
+
+	public void setFaltas(Long faltas) {
+		this.faltas = faltas;
+	}
+
+	public Avaliacao getAvaliacao() {
+		return avaliacao;
+	}
+
+	public void setAvaliacao(Avaliacao avaliacao) {
+		this.avaliacao = avaliacao;
+	}
+
+	public AnoBimestre getAnoBimestre() {
+		return anoBimestre;
+	}
+
+	public void setAnoBimestre(AnoBimestre anoBimestre) {
+		this.anoBimestre = anoBimestre;
+	}
+
+}

@@ -1,0 +1,31 @@
+package com.github.henrique.avaliacaojava.dto;
+
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import com.github.henrique.avaliacaojava.models.Aluno;
+import com.github.henrique.avaliacaojava.models.AnoBimestre;
+import com.github.henrique.avaliacaojava.models.Avaliacao;
+
+public class LancamentoNotaDto {
+
+	@NotNull(message = "{lancamentoNota.aluno.campoObrigatorio}")
+	Aluno aluno;
+
+	@Column(name = "OBSERVACAO")
+	String observacao;
+
+	@NotEmpty(message = "{lancamentoNota.faltas.campoObrigatorio}")
+	String faltas;
+
+	@NotNull(message = "{lancamentoNota.avaliacao.campoObrigatorio}")
+	Avaliacao avaliacao;
+
+	@NotNull(message = "{lancamentoNota.anoBimestre.campoObrigatorio}")
+	AnoBimestre anoBimestre;
+
+}

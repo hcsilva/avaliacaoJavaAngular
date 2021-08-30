@@ -1,0 +1,20 @@
+package com.github.henrique.avaliacaojava.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@SuppressWarnings("serial")
+@Entity
+@Table(name = "ANO_BIMESTRE")
+public class AnoBimestre extends AbstractEntity<Long> {
+
+	@NotNull
+	@Column(name = "ANO")
+	Long ano;
+
+	@Column(name = "BIMESTRE")
+	Long bimestre;
+
+}

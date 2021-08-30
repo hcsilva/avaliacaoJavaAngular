@@ -1,0 +1,8 @@
+package com.github.henrique.avaliacaojava.models;
+
+import javax.persistence.Table;
+
+@Table(name = "AVALIACAO")
+public class Avaliacao {
+
+}

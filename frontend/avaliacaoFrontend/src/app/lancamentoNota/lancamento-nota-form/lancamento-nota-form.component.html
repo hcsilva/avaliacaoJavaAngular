@@ -1,0 +1,110 @@
+<mat-card>
+    <mat-card-title>Novo Lançamento Nota</mat-card-title>
+    <form [formGroup]="formulario" (ngSubmit)="submit()">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Aluno*</mat-label>
+            <mat-select formControlName="aluno">
+                <mat-option *ngFor="let aluno of alunos" [value]="aluno">
+                    {{aluno.nome}}
+                </mat-option>
+            </mat-select>
+            <mat-hint style="color: red;" *ngIf="
+            (aluno.touched || aluno.dirty) && aluno.invalid && aluno?.errors?.required">
+                Aluno é obrigatório
+            </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="full-width ">
+            <mat-label>Ano*</mat-label>
+            <input formControlName="ano" matInput type="text" mask="0000" placeholder="Digite o ano" (blur)="onChangeCampoAno()">
+            <mat-hint style="color: red;" *ngIf="
+            (ano.touched || ano.dirty) && ano.invalid && ano?.errors?.required">
+                Ano é obrigatório
+            </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Bimestre*</mat-label>
+            <mat-select formControlName="bimestre">
+                <mat-option *ngFor="let bimestre of bimestres" [value]="bimestre">
+                    {{bimestre.bimestre}}
+                </mat-option>
+            </mat-select>
+            <mat-hint style="color: red;" *ngIf="
+            (bimestre.touched || bimestre.dirty) && bimestre.invalid && bimestre?.errors?.required">
+                Bimestre é obrigatório
+            </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="full-width ">
+            <mat-label>Faltas*</mat-label>
+            <input formControlName="faltas" matInput maxlength="2" type="text " mask="separator.0" placeholder="Quantidade Máxima 40">
+            <mat-hint style="color: red;" *ngIf="
+            (faltas.touched || faltas.dirty) && faltas.invalid && faltas?.errors?.required">
+                faltas é obrigatório
+            </mat-hint>
+
+            <mat-hint style="color: red;" *ngIf="faltas.errors?.max">
+                A quantidade de faltas não pode ser superior a 40
+            </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="full-width ">
+            <mat-label>Participação em Sala de Aula*</mat-label>
+            <input formControlName="participacaoSala" matInput maxlength="3" type="text " mask="separator.2" thousandSeparator="," placeholder="Nota Máxima 1.5">
+            <mat-hint style="color: red;" *ngIf="
+            (participacaoSala.touched || participacaoSala.dirty) && participacaoSala.invalid && participacaoSala?.errors?.required">
+                Participação em sala de aula é obrigatório
+            </mat-hint>
+
+            <mat-hint style="color: red;" *ngIf="participacaoSala.errors?.max">
+                A nota não pode ser superior a 1.5
+            </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="full-width ">
+            <mat-label>Entrega da Tarefas*</mat-label>
+            <input formControlName="entregaTarefas" matInput maxlength="3" type="text " mask="separator.2" thousandSeparator="," placeholder="Nota Máxima 2.5">
+            <mat-hint style="color: red;" *ngIf="
+            (entregaTarefas.touched || entregaTarefas.dirty) && entregaTarefas.invalid && entregaTarefas?.errors?.required">
+                Entrega da tarefas é obrigatório
+            </mat-hint>
+
+            <mat-hint style="color: red;" *ngIf="entregaTarefas.errors?.max">
+                A nota não pode ser superior a 2.5
+            </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="full-width ">
+            <mat-label>Trabalho Bimestral*</mat-label>
+            <input formControlName="trabalhoBimestral" matInput maxlength="3" type="text " mask="separator.2" thousandSeparator="," placeholder="Nota Máxima 3">
+            <mat-hint style="color: red;" *ngIf="
+            (trabalhoBimestral.touched || trabalhoBimestral.dirty) && trabalhoBimestral.invalid && trabalhoBimestral?.errors?.required">
+                Trabalho Bimestral é obrigatório
+            </mat-hint>
+
+            <mat-hint style="color: red;" *ngIf="trabalhoBimestral.errors?.max">
+                A nota não pode ser superior a 3
+            </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="full-width ">
+            <mat-label>Prova Bimestral*</mat-label>
+            <input formControlName="provaBimestral" matInput maxlength="3" type="text " mask="separator.2" thousandSeparator="," placeholder="Nota Máxima 3">
+            <mat-hint style="color: red;" *ngIf="
+            (provaBimestral.touched || provaBimestral.dirty) && provaBimestral.invalid && provaBimestral?.errors?.required">
+                Prova Bimestral é obrigatório
+            </mat-hint>
+
+            <mat-hint style="color: red;" *ngIf="provaBimestral.errors?.max">
+                A nota não pode ser superior a 3
+            </mat-hint>
+        </mat-form-field>
+
+        <mat-card-actions>
+            <button [disabled]="formulario.invalid" type="submit" mat-raised-button color="primary">Adicionar</button>
+            <button type="button" mat-raised-button color="warn" (click)="cancel()">Cancelar</button>
+        </mat-card-actions>
+    </form>
+</mat-card>

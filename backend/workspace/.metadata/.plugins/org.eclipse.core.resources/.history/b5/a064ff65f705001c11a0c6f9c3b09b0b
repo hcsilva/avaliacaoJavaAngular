@@ -1,0 +1,32 @@
+package com.github.henrique.avaliacaojava.dto;
+
+import javax.validation.constraints.NotEmpty;
+
+public class AvaliacaoDto {
+
+	@NotEmpty(message = "{avaliacao.descricao.campoObrigatorio}")
+	private String descricao;
+
+	@NotEmpty(message = "{avaliacao.peso.campoObrigatorio}")
+	private String peso;
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getPeso() {
+		return peso;
+	}
+
+	public void setPeso(String peso) {
+		this.peso = peso;
+	}
+
+	
+	
+	
+}

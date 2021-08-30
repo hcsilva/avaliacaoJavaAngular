@@ -1,0 +1,68 @@
+package com.github.henrique.avaliacaojava.dto;
+
+import javax.persistence.Column;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import com.github.henrique.avaliacaojava.models.Aluno;
+import com.github.henrique.avaliacaojava.models.AnoBimestre;
+import com.github.henrique.avaliacaojava.models.Avaliacao;
+
+public class LancamentoNotaDto {
+
+	@NotNull(message = "{lancamentoNota.aluno.campoObrigatorio}")
+	Aluno aluno;
+
+	@Column(name = "OBSERVACAO")
+	String observacao;
+
+	@NotEmpty(message = "{lancamentoNota.faltas.campoObrigatorio}")
+	String faltas;
+
+	@NotNull(message = "{lancamentoNota.avaliacao.campoObrigatorio}")
+	Avaliacao avaliacao;
+
+	@NotNull(message = "{lancamentoNota.anoBimestre.campoObrigatorio}")
+	AnoBimestre anoBimestre;
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
+	public String getFaltas() {
+		return faltas;
+	}
+
+	public void setFaltas(String faltas) {
+		this.faltas = faltas;
+	}
+
+	public Avaliacao getAvaliacao() {
+		return avaliacao;
+	}
+
+	public void setAvaliacao(Avaliacao avaliacao) {
+		this.avaliacao = avaliacao;
+	}
+
+	public AnoBimestre getAnoBimestre() {
+		return anoBimestre;
+	}
+
+	public void setAnoBimestre(AnoBimestre anoBimestre) {
+		this.anoBimestre = anoBimestre;
+	}
+
+}

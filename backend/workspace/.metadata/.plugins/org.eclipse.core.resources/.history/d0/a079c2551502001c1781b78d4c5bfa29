@@ -1,0 +1,55 @@
+package com.github.henrique.avaliacaojava.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.github.henrique.avaliacaojava.models.Avaliacao;
+import com.github.henrique.avaliacaojava.repository.AnoBimestreRepository;
+import com.github.henrique.avaliacaojava.repository.AvaliacaoRepository;
+
+public class AvaliacaoService {
+
+	@Autowired
+	private AnoBimestreRepository anoBimestreRepository;
+
+	@Transactional
+	public Avaliacao save(Avaliacao avaliacao) {
+		return avaliacaoRepository.save(avaliacao);
+	}
+
+	@Transactional(readOnly = true)
+	public Avaliacao findById(Long id) {
+		return avaliacaoRepository.findById(id)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Avaliação não encontrada"));
+	}
+
+	public void deletar(Long id) {
+		Avaliacao avaliacao = findById(id);
+		avaliacaoRepository.delete(avaliacao);
+	}
+
+	public void update(Long id, Avaliacao avaliacaoNova) {
+		Avaliacao avaliacaoSalvo = findById(id);
+		Avaliacao avaliacao = avaliacaoNova;
+		avaliacao.setId(avaliacaoSalvo.getId());
+
+		avaliacaoRepository.save(avaliacao);
+	}
+
+	@Transactional(readOnly = true)
+	public List<Avaliacao> findAll() {
+		return avaliacaoRepository.findAll();
+	}
+
+	@Transactional(readOnly = true)
+	public Page<Avaliacao> findAll(Pageable pageable) {
+		return avaliacaoRepository.findAll(pageable);
+	}
+
+}

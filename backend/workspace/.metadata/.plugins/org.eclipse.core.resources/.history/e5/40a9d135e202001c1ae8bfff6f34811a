@@ -1,0 +1,41 @@
+package com.github.henrique.avaliacaojava.models;
+
+import java.math.BigDecimal;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+@SuppressWarnings("serial")
+@Entity
+@Table(name = "AVALIACAO")
+public class Avaliacao extends AbstractEntity<Long> {
+
+	
+	@NotEmpty
+	@Column(name = "DESCRICAO")
+	String descricao;
+
+	@NotNull
+	@Column(name = "PESO")
+	BigDecimal peso;
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Long getPeso() {
+		return peso;
+	}
+
+	public void setPeso(Long peso) {
+		this.peso = peso;
+	}
+
+}

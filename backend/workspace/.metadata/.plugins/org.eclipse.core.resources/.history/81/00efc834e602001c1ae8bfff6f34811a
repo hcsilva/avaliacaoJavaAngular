@@ -1,0 +1,16 @@
+tipoConta.descricao.campoObrigatorio = Campo Descrição é Obrigatorio.
+tipoConta.descricao.size = Descrição muito longa.
+tipoConta.tipo.campoObrigatorio = Campo Tipo é Obrigatorio.
+
+contaContabil.descricao.campoObrigatorio = Campo Descrição é Obrigatório.
+contaContabil.descricao.size = Descrição muito longa.
+contaContabil.tipoConta.campoObrigatorio = O Campo Tipo Conta é Obrigatorio.
+
+conta.descricao.campoObrigatorio = Campo Descrição é Obrigatório.
+conta.contaContabil.campoObrigatorio = Campo Conta Contábil é Obrigatório.
+conta.descricao.size = Descrição muito longa.
+
+lancamento.valor.campoObrigatorio =  Campo Valor é Obrigatório.
+lancamento.descricao.campoObrigatorio =  Campo Descrição é Obrigatório.
+lancamento.descricao.size = Descrição muito longa.
+lancamento.conta.campoObrigatorio = Campo Conta é Obrigatório.

@@ -1,0 +1,19 @@
+package com.github.henrique.avaliacaojava.util;
+
+import java.math.BigDecimal;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class LongConverter {
+
+	public Long converter(String value) {
+		if (value == null) {
+			return null;
+		}
+
+		value = new Long(value);
+		return new BigDecimal(value);
+	}
+
+}

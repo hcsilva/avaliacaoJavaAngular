@@ -1,0 +1,5 @@
+package com.github.henrique.avaliacaojava.dto;
+
+public class AnoBimestreDto {
+
+}

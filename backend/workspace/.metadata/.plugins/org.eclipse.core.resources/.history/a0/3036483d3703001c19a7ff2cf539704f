@@ -1,0 +1,10 @@
+package com.github.henrique.avaliacaojava.dto;
+
+import javax.validation.constraints.NotEmpty;
+
+public class AlunoDto {
+
+	@NotEmpty(message = "{aluno.descricao.campoObrigatorio}")
+	String nome;
+
+}

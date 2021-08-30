@@ -1,0 +1,21 @@
+package com.github.henrique.avaliacaojava.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@SuppressWarnings("serial")
+@Entity
+@Table(name = "ALUNO")
+public class Aluno extends AbstractEntity<Long>{
+	
+	
+	
+	@Column(name = "NOME")
+	String nome;
+	
+	
+	
+
+}
